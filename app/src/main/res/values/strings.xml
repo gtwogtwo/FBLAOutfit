@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FBLA Outfit</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="string">search</string>
+    <string name="title_activity_post">PostActivity</string>
+    <string name="title_activity_startup">StartupActivity</string>
+</resources>
