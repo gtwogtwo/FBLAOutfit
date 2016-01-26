@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
@@ -19,8 +20,8 @@ import io.fabric.sdk.android.Fabric;
 public class MainActivity extends AppCompatActivity {
 
     // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
-    private static final String TWITTER_KEY = "IuMOf7d5A7FHus9XvOhgiFIkf";
-    private static final String TWITTER_SECRET = "mJZ4PX5v4uTWjOYiLqlMx3cgwZZLmotWJLTdRcLN4Y9WD182rL";
+    private static final String TWITTER_KEY = "";
+    private static final String TWITTER_SECRET = "";
 
     TwitterLoginButton loginButton;
 
@@ -36,13 +37,14 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setCallback(new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
+                //start search activity
                 Intent search_intent = new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(search_intent);
             }
 
             @Override
             public void failure(TwitterException e) {
-
+                Toast.makeText(MainActivity.this, "Check internet connection", Toast.LENGTH_SHORT).show();
             }
         });
     }

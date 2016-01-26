@@ -12,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -25,6 +27,7 @@ import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.models.Search;
 import com.twitter.sdk.android.core.models.Tweet;
 import com.twitter.sdk.android.core.services.SearchService;
+import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
 import com.twitter.sdk.android.tweetui.TweetViewAdapter;
 
 import java.util.List;
@@ -34,13 +37,11 @@ public class SearchActivity extends ActionBarActivity{
 
 
     //search setup
-    private  boolean flagloading;
-    private boolean endofsearchResult;
     private static String Search_query = "#FBLAoutfit";
     private TweetViewAdapter adapter;
     private static final String Search_result_type = "recent";
     private static final int Search_count = 20;
-    private long maxId;
+
     ListView SearchList;
 
 
@@ -48,6 +49,7 @@ public class SearchActivity extends ActionBarActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
         adapter = new TweetViewAdapter(SearchActivity.this);
         SearchList = (ListView) findViewById(R.id.tweet_search);
         SearchList.setAdapter(adapter);
@@ -55,35 +57,34 @@ public class SearchActivity extends ActionBarActivity{
 
         //run search
         final SearchService service = Twitter.getApiClient().getSearchService();
-        service.tweets(Search_query, null, null, null, Search_result_type, Search_count, null, null, maxId, true, new Callback<Search>() {
-            @Override
-            public void success(Result<Search> result) {
-                setProgressBarIndeterminateVisibility(false);
-                final List<Tweet> tweets = result.data.tweets;
-                adapter.getTweets().addAll(tweets);
-                adapter.notifyDataSetChanged();
+        service.tweets(Search_query, null, null, null, Search_result_type, Search_count, null, null, null,
+                true, new Callback<Search>() {
+                    @Override
+                    public void success(Result<Search> result) {
+                        setProgressBarIndeterminateVisibility(false);//end loading
+                        final List<Tweet> tweets = result.data.tweets;//get tweets
+                        adapter.getTweets().addAll(tweets);//add tweets to list
+                        adapter.notifyDataSetChanged();//update list
+                    }
 
-                if(tweets.size() > 0) {
-                    maxId = tweets.get(tweets.size() - 1).id - 1;
-                }
-                else{
-                    endofsearchResult = true;
-                }
-                flagloading = false;
-            }
-
-            @Override
-            public void failure(TwitterException e) {
-                setProgressBarIndeterminateVisibility(false);
-                Toast.makeText(SearchActivity.this, "Failed to load", Toast.LENGTH_LONG).show();
-            }
-        });
-
+                    @Override
+                    public void failure(TwitterException e) {
+                        setProgressBarIndeterminateVisibility(false);//end loading
+                        Toast.makeText(SearchActivity.this, "Failed to load", Toast.LENGTH_LONG).show();
+                    }
+                });
     }
-    //
+
     public void buttonOnClickPost(View v){
-        startActivity(new Intent(SearchActivity.this, PostActivity.class));
+        startActivity(new Intent(SearchActivity.this, PostActivity.class));//start post activity
     }
+
+
+    public void buttonOnClickRefresh(View v){
+        recreate();// restart the activity
+    }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
