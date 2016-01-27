@@ -24,7 +24,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Is this outfit appropriate for FBLA-PBL?"
+        android:text="Is this outfit appropriate for FBLA?"
         android:id="@+id/button2"
         android:layout_below="@+id/button"
         android:layout_alignParentLeft="true"
@@ -64,7 +64,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Does this outfit follow the FBLA-PBL dress code?"
+        android:text="Does this outfit follow the FBLA dress code?"
         android:id="@+id/button6"
         android:layout_below="@+id/button5"
         android:layout_alignParentLeft="true"

@@ -30,13 +30,13 @@ public class PostActivity extends AppCompatActivity {
 
     public void buttonOnClickFBLAappropriate(View v){
         TweetComposer.Builder builder = new TweetComposer.Builder(this)
-                .text("Is this outfit appropriate for FBLA-PBL? #FBLAoutfit");
+                .text("Is this outfit appropriate for FBLA? #FBLAoutfit");
         builder.show();
     }
 
     public void buttonOnClickOutfitFBLAdresscode(View v){
         TweetComposer.Builder builder = new TweetComposer.Builder(this)
-                .text("Does this outfit follow the FBLA-PBL dress code? #FBLAoutfit");
+                .text("Does this outfit follow the FBLA dress code? #FBLAoutfit");
         builder.show();
 
     }
