@@ -9,10 +9,11 @@ It uses the twitter kit on fabric IDE to post questions about your outfit and to
 
 If you want to run the app locally, do the following:
 
-1. Import the project to Android Studio, download at http://developer.android.com/sdk/index.html
+1. Import the project to Android Studio, download Android Studio at http://developer.android.com/sdk/index.html
 2. Create fabric account at https://fabric.io/
 3. Download Fabric IDE, in android studio Preferences > plugins > search "fabric" > install plugin
-4. Run it 
+4. Fill in your keys under the fabric menu
+5. Run it 
 
 # Run on Android
 
