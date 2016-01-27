@@ -1,7 +1,7 @@
 # FBLA Outfit
 
 Fbla Outfit is an app for the FBLA Mobile Application Development event. 
-It uses the twitter kit on fabric IDE to post questions about your outfit and to easily see the posts from other users of the app.
+It uses the twitter kit on fabric IDE to post questions about your outfit and to easily see and reply to the posts from other users of the app.
 
 
 
