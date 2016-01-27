@@ -14,3 +14,10 @@ If you want to run the app locally, do the following:
 3. Download Fabric IDE, in android studio Preferences > plugins > search "fabric" > install plugin
 4. Run it 
 
+# Run on Android
+
+To run on Android, do the following:
+
+1. Enable unknown sources in settings > security > unknown sources
+2. Download APK file to phone
+3. Click on file and install
